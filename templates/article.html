@@ -47,6 +47,16 @@
             <p class="article-meta">{{ article.create_data|date:"F j, Y" }} {{ article.author }}</p>
             <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid my-3"> <!-- Make the image responsive -->
             <p class="article-description">{{ article.description }}</p>
+            {% if messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <ul class="messages mb-0">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
             Izohlar:
             {% for comment in comments %}
                 <div>
@@ -54,6 +64,14 @@
                     <p style="font-style: italic;">{{ comment.text }}</p>
                 </div>
             {% endfor %}
+            <form action="{% url 'article-detail' article.id %}" method="POST">
+                {%csrf_token%}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary">Izoh qoldirish</button>
+
+            </form>
+            
+
             <a href="{% url 'articles-list' %}" class="btn btn-primary back-button">Asosiy sahifa</a>
         </div>
     </div>
