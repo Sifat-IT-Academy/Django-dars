@@ -17,5 +17,6 @@ class Comment(models.Model):
     first_name = models.CharField(max_length=50)
     text = models.TextField()
     create_date = models.DateTimeField(auto_now=True)
+    rating = models.IntegerField(default=3)
 
     article = models.ForeignKey(Article,on_delete=models.CASCADE)
