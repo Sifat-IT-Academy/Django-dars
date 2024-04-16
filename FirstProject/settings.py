@@ -117,8 +117,10 @@ USE_TZ = True
 
 # yangi qo'shildi
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS =[
+    BASE_DIR / "static"
+]
 # yangi qo'shildi
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
