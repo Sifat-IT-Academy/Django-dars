@@ -6,6 +6,11 @@ from django.urls import reverse  # new
 
 from .forms import ArticleForm,CommentForm
 
+
+def home(request):
+
+    return render(request,"home.html")
+
 def main(request):
     articles = Article.objects.filter(is_active=True).order_by("-id")
     context = {"articles":articles}
